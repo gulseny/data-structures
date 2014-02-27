@@ -6,7 +6,8 @@ define([
   '../lib/mocha/mocha.js',
   'src/'+variant+'/stack.js',
   'src/'+variant+'/queue.js',
-  '../lib/jquery/jquery.js'
+  '../lib/jquery/jquery.js',
+  'src/test.js'
 ], function(verifyClass, chai){
 
   $(function(){
@@ -142,6 +143,22 @@ define([
       });
 
     });
+
+    describe('queue test speed', function(){
+      it('test-time loop-'+ 30000, function(){
+        expect(testMakeQueue(30000, queue)).to.equal(0);
+      });
+      it('test-time loop-'+ 20000, function(){
+        expect(testMakeQueue(20000, queue)).to.equal(0);
+      });
+      it('test-time loop-'+ 10000, function(){
+        expect(testMakeQueue(10000, queue)).to.equal(0);
+      });
+      it('test-time loop-'+ 1000, function(){
+        expect(testMakeQueue(1000, queue)).to.equal(0);
+      });
+    });
+
 
     describe('queue-specific behavior', function(){
       it('removes the least recently added of two items', function() {
