@@ -50,4 +50,18 @@ describe("linkedList", function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it("extra-credit: add to head 4 and 5", function(){
+    linkedList.addToHead(4);
+    linkedList.addToHead(5);
+    expect(linkedList.head.value).to.equal(5);
+    expect(linkedList.head.next.value).to.equal(4);
+  });
+
+  it("extra-credit: addToHead(5), addToHead(4) & remove tail => 4 ", function(){
+    linkedList.addToHead(5); // {list:5, head:5 , tail:5}
+    linkedList.addToHead(4); // {list:{4,5}, head:4, tail:5}
+    linkedList.removeTail(); // {list:{4}, head:4, tail:4}
+    expect(linkedList.tail.value).to.equal(4);
+    expect(linkedList.head.value).to.equal(4);
+  });
 });
