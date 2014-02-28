@@ -30,7 +30,8 @@ treeMethods.addChild = function(value){
 
 treeMethods.removeFromParent = function(aChild){
   var parent = aChild.parent;
-  parent.children.splice(parent.children.indexOf(aChild),1);
+  var childIndex = parent.children.indexOf(aChild);
+  parent.children.splice(childIndex,1);
   aChild.parent = undefined;
 };
 
