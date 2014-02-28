@@ -1,5 +1,3 @@
-var expect = chai.expect;
-var assert = chai.assert;
 
 describe("tree", function() {
   var tree;
@@ -42,6 +40,26 @@ describe("tree", function() {
     tree.children[1].addChild(8);
     assert.isTrue(tree.contains(7));
     assert.isTrue(tree.contains(8));
+  });
+
+  it("extra-credit: should correctly assign parent", function(){
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    expect(tree.children[0].parent.value).to.equal(undefined);
+    expect(tree.children[0].children[0].parent.value).to.equal(5);
+  });
+  
+  it("extra-credit: should correctly remove from parent", function(){
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    var aChild = tree.children[1].children[0];
+    tree.removeFromParent(aChild);
+    expect(tree.children[1].children[0]).to.equal(undefined);
+    expect(aChild.parent).to.equal(undefined);
   });
 
 });

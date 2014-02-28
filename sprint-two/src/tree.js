@@ -1,7 +1,8 @@
 var makeTree = function(value){
   var tree = {
     value: value,
-    children: undefined
+    children: undefined,
+    parent: undefined
   };
 
   extend(tree, treeMethods);
@@ -19,11 +20,18 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value){
   var aSubTree = makeTree(value);
+  aSubTree.parent = this;
   if(this.children){
     this.children.push(aSubTree);
   } else {
     this.children = [aSubTree];
   }
+};
+
+treeMethods.removeFromParent = function(aChild){
+  var parent = aChild.parent;
+  parent.children.splice(parent.children.indexOf(aChild),1);
+  aChild.parent = undefined;
 };
 
 treeMethods.contains = function(target){
