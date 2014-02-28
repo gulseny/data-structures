@@ -24,23 +24,3 @@ var makeQueue = function(){
 
   return instance;
 };
-
-
-
-//test makeQueue
-
-var testMakeQueue = function(n, callback){
-  var queue = callback();
-  var startTime = new Date();
-  for (var i = 0; i < n; i++) {
-    queue.enqueue(i);
-  }
-  for (var j = 0; j < n; j++) {
-    queue.dequeue();
-  }
-  var endTime = new Date();
-  console.log(endTime - startTime);
-  return endTime - startTime;
-};
-
-testMakeQueue(1000, makeQueue);

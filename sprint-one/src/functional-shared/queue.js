@@ -24,6 +24,7 @@ queueMethods.dequeue = function(){
     return value;
   };
 
+
 queueMethods.size = function(){
     return Object.keys(this.storage).length;
   };
