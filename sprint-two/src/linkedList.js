@@ -4,15 +4,14 @@ var makeLinkedList = function(){
   list.tail = null; //  a linkedListNode instance
 
   list.addToTail = function(value){
-    // Takes a value and adds it to the end of the list
     var node = makeNode(value);
-    if(!list.head){ // test if list.head is null
+    if(!list.head){
       list.head = node;
       list.tail = node;
     }
-    else{ // UPDATE
-      list.tail.next = node; // 1. the 'next' of current tail
-      list.tail = node;      // 2. the current tail
+    else{
+      list.tail.next = node;
+      list.tail = node;
     }
   };
 
@@ -23,14 +22,14 @@ var makeLinkedList = function(){
   };
 
   list.contains = function(target, node){
-    // Returns boolean reflecting whether or not the passed-in value is in the linked list
-    var doesContain = false;
-    if(someTest){ 
-      // go through the list
-      // for / while
-      doesContain = true;
+    var currentNode = list.head;
+    while(currentNode){
+      if(currentNode.value === target){
+        return true;
+      }
+      currentNode = currentNode.next;
     }
-    return doesContain;
+    return false;
   };
 
   return list;
