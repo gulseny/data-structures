@@ -31,10 +31,6 @@ makeBinarySearchTree.prototype.contains = function(value){
 // depthFirstLog(): accepts a callback and executes it on every value contained in the tree
 makeBinarySearchTree.prototype.depthFirstLog = function(callback){
   callback(this.value);
-
-  // we aim to call the callback function on the current subtree
-
-
   if(this.left){
     this.left.depthFirstLog(callback);
   }
